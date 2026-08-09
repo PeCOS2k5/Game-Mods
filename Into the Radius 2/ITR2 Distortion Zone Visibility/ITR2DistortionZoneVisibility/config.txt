@@ -1,0 +1,25 @@
+# ITR2 Distortion Zone Visibility - configuration
+#
+# Re-read once a second while the game runs. Save and the change applies
+# in-world within about a second. No reload needed.
+#
+# ---------------------------------------------------------------------
+#   enabled         1 = mod active, 0 = game left completely stock
+#
+#   blendable_off   a camera post process effect to suppress. Repeatable
+#                   -- add one line per effect. Matching is a
+#                   case-insensitive substring of the asset name.
+#                   Comment a line out to restore that effect.
+#
+# These are ON/OFF, not dials. A weight of 0.01 looks identical to 1.0;
+# only exactly 0 removes the effect. Unreal applies a post process
+# material of this kind at full strength for any weight above zero, so
+# no in-between exists whatever value you write.
+#
+# ---------------------------------------------------------------------
+
+[default]
+enabled       = 1
+
+blendable_off = DistortionZonePP
+blendable_off = VisionPP_DistorsionHelmet

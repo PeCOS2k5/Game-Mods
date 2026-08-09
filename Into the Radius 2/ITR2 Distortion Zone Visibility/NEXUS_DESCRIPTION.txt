@@ -1,0 +1,78 @@
+REQUIREMENTS
+
+  UE4SS for Into the Radius 2.
+  Developed and tested against UE4SS v3.0.1 Beta (Shipping build).
+
+  Nothing else. This is a Lua-only mod - it replaces no game assets, so
+  it needs no pak tools, no LogicMods loader and no other dependency.
+
+  Tested on Steam build 24024260 (executable dated 7 July 2026,
+  Unreal Engine 5.5.4 Oculus fork). Effects are matched by asset name
+  rather than by position, so a game update only breaks it if the
+  effect is renamed.
+
+
+COMPATIBILITY
+
+  Safe with:
+
+    - ITR2 Fog Tweaks (my other mod). They control completely
+      different systems and do not interact.
+    - Any .pak / LogicMod. This mod replaces no files, so it cannot
+      conflict with an asset mod at the file level.
+    - vrperfkit, OpenXR Toolkit, ReShade and similar. Those operate at
+      the graphics API layer, below anything this touches.
+    - Save games are never read or written. Uninstalling is deleting
+      the folder. The effect returns the next time you enter a zone.
+
+
+  Conflicts with:
+
+    - Any other mod that writes post process blendable weights on the
+      player camera. Both would be writing the same values every frame.
+
+    - A mod that replaces the player character blueprint, if it also
+      renames or removes the DistortionZonePP effect. The mod matches
+      on the asset name, so a renamed effect simply stops being found -
+      no crash, it just stops working, and you can point config.txt at
+      the new name.
+
+    - Mods that change the anti-distortion helmet, but only if you have
+      uncommented the optional VisionPP_DistorsionHelmet line.
+
+
+  Untested:
+
+    - Co-op. The mod only changes what your own client renders and
+      nothing it touches is replicated, so it should not affect your
+      partner or cause desync - but I have not verified this with a
+      second player.
+
+
+DOES THIS MAKE THE GAME EASIER?
+
+  You can see inside a distortion zone. That is the entire point, and
+  yes, it makes zones easier to navigate.
+
+  What it does NOT do: the zone still damages you exactly as before,
+  the anti-distortion helmet still works exactly as before, and the
+  zone is still plainly visible from the outside. The dome, the
+  particles and the red light are all left completely untouched, so you
+  will never walk into a zone without knowing it is there. Only the
+  full-screen haze is removed.
+
+
+WHY IS THERE NO SLIDER?
+
+  The haze is a post process material on the player's camera, switched
+  by the game between weight 0 and weight 1. Unreal applies a material
+  of this kind at full strength for any weight above zero, so 0.01 and
+  1.0 render identically and only exactly 0 removes it. This is on or
+  off by nature, not by choice.
+
+
+PERFORMANCE
+
+  Negligible. It checks a cached list of camera effects five times a
+  second and writes a single float when one needs holding down. It
+  removes render work rather than adding it.

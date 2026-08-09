@@ -1,0 +1,73 @@
+REQUIREMENTS
+
+  UE4SS for Into the Radius 2.
+  Developed and tested against UE4SS v3.0.1 Beta (Shipping build).
+
+  Nothing else. This is a Lua-only mod - it replaces no game assets, so
+  it needs no pak tools, no LogicMods loader and no other dependency.
+
+  Tested on Steam build 24024260 (executable dated 7 July 2026,
+  Unreal Engine 5.5.4 Oculus fork). It reads the game's own fog values
+  at runtime rather than assuming any particular numbers, so it should
+  survive game updates unless the fog system itself is rewritten.
+
+
+COMPATIBILITY
+
+  Safe with:
+
+    - ITR2 Distortion Zone Visibility (my other mod). They control
+      completely different systems and do not interact.
+    - Any .pak / LogicMod. This mod replaces no files, so it cannot
+      conflict with an asset mod at the file level.
+    - vrperfkit, OpenXR Toolkit, ReShade and similar. Those operate at
+      the graphics API layer, below anything this touches.
+    - Save games are never read or written. Uninstalling is deleting
+      the folder, and the game returns to stock immediately.
+
+
+  Conflicts with:
+
+    - Any other mod that changes the height fog, the weather, or the
+      sky controller at runtime. If another Lua mod writes fog density
+      every frame, the two will fight and you will see flicker.
+      Asset mods that change the fog's authored values are fine: this
+      mod scales whatever the game asks for, so their values simply get
+      scaled too.
+
+    - Any earlier or development build of this same mod. Two copies
+      hook the same functions and will fight. Remove the old folder.
+
+    - Any mod that binds F8, which this mod uses as an on/off toggle.
+      Delete the RegisterKeyBind block near the end of Scripts/main.lua
+      if you need that key back; nothing else depends on it.
+
+    - A mod that renames the per-map lighting sublevels would break the
+      per-map sections in config.txt, though [default] would still
+      apply. Check authored.txt for the names actually in use.
+
+
+  Untested:
+
+    - Co-op. The mod only changes what your own client renders and
+      nothing it touches is replicated, so it should not affect your
+      partner or cause desync - but I have not verified this with a
+      second player.
+
+
+DOES THIS MAKE THE GAME EASIER?
+
+  It changes only the renderer's fog component. Enemy detection in this
+  game is driven by the game's own fog logic, not by what the fog
+  component happens to be rendering, so enemies should see you exactly
+  as they always did. I have not tested this rigorously, so treat it as
+  "very likely no advantage" rather than a guarantee.
+
+  You will obviously see further, which is the point.
+
+
+PERFORMANCE
+
+  Negligible. It reads a small config file once a second and scales a
+  handful of float properties. It does not add render work - if
+  anything, thinning volumetric fog slightly reduces it.
