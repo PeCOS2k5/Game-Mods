@@ -46,9 +46,9 @@ CONFIGURING
   Edit config.txt inside the mod folder. It is re-read once a second,
   so a change applies as soon as the goggles are on - no reload.
 
-      [PVS7]    extend = 150
-      [PVS31]   extend = 150
-      [GPNVG]   extend = 240,  base = 0.126
+      [PVS7]    extend = 260
+      [PVS31]   extend = 180
+      [GPNVG]   extend = 280,  base = 0.126
       [PVS14]   enabled = 0
 
 
@@ -56,11 +56,13 @@ CONFIGURING
 
   "extend" is a percentage of the material's radius parameter, NOT a
   percentage of what you see. The visible area grows much more slowly
-  than the number does. In testing, 150 read as roughly a 15 percent
-  bigger view.
+  than the number does - 150 read as only about 15 percent more image,
+  which is why the shipped values sit in the 180-300 range rather than
+  near 100.
 
-  So move in large steps. If a change looks like it did nothing, try
-  200 before deciding the mod is broken.
+  So move in large steps. Going from 260 to 275 will do almost nothing.
+  260 to 350 is a real difference. If an edit seems to have had no
+  effect, it was probably too small rather than broken.
 
 
   GPNVG is a special case. Unlike the other two it never sets a radius

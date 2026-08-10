@@ -62,8 +62,12 @@ A NOTE ON THE PERCENTAGE
 
   The setting scales the material's radius parameter, not the apparent
   size of the view, and the relationship is far from linear. 150 reads
-  as roughly a 15 percent bigger image. Move in large steps - if a
-  change seems to do nothing, try 200 before assuming it is broken.
+  as only about 15 percent more image, which is why the shipped values
+  sit in the 180-300 range rather than near 100.
+
+  Move in large steps. 260 to 275 will do almost nothing; 260 to 350 is
+  a real difference. If an edit seems to have had no effect, it was
+  probably too small rather than broken.
 
   GPNVG-18 is a special case. It is the only one of the three that
   never sets a radius of its own, so there is no stock value to take a

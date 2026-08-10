@@ -12,10 +12,13 @@
 # IMPORTANT - extend is not a percentage of what you see.
 #
 # It scales the material's radius parameter, and the visible area grows
-# far more slowly than that number. In testing, 150 read as roughly a
-# 15 percent bigger view. So move in big steps: 150 is a gentle nudge,
-# not half again as much vision. If a change looks like it did nothing,
-# try 200 before assuming the mod is broken.
+# far more slowly than that number. 150 read as only about 15 percent
+# more image, which is why the shipped values are in the 180-300 range
+# rather than near 100.
+#
+# So move in big steps. Changing 260 to 275 will do almost nothing;
+# 260 to 350 is a real difference. If an edit looks like it had no
+# effect, it was probably too small rather than broken.
 #
 # Sections are per device. Stock values measured in game:
 #
@@ -27,17 +30,17 @@
 
 [default]
 enabled = 1
-extend  = 150
+extend  = 300
 
 
-# Single tube. Stock radius 0.100 -> 0.150 at 150.
+# Single tube. Stock radius 0.100 -> 0.260 at 260.
 [PVS7]
-extend = 150
+extend = 260
 
 
-# Dual tube. Stock radius 0.126 -> 0.189 at 150.
+# Dual tube. Stock radius 0.126 -> 0.227 at 180.
 [PVS31]
-extend = 150
+extend = 180
 
 
 # Quad tube panoramic.
@@ -45,13 +48,13 @@ extend = 150
 # This one never sets a radius of its own, so there is no stock value to
 # take a percentage of - the mod creates the override from scratch, and
 # "base" is what 100 refers to. 0.126 is borrowed from the dual tube, so
-# the shipped 240 works out to a radius of 0.302.
+# the shipped 280 works out to a radius of 0.353.
 #
 # Because base is a stand-in rather than a measurement, GPNVG's
 # percentage is not comparable to the other two. Judge it by eye.
 [GPNVG]
 base   = 0.126
-extend = 240
+extend = 280
 
 
 # Single tube monocular. Its material ignores the radius parameter and
