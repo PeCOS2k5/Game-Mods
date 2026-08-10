@@ -1,0 +1,71 @@
+# ITR2 Custom Level Routes - configuration
+#
+# Re-read once a second and re-applied on every level load. Edit while
+# the game is running; the change takes effect before you reach the gate.
+#
+# ---------------------------------------------------------------------
+#   retarget = <gate tag> | <destination level> | <arrival marker>
+#
+# Finds the transition whose UnlockTriggerTag matches the gate tag and
+# points it somewhere else. Repeatable - one line per route.
+#
+#   debug = 1   logs which transition you are nearest to and where it
+#               leads, which is how you discover tags for new routes
+# ---------------------------------------------------------------------
+
+
+# TOWN -> HUB
+#
+# Town has TWO routes to Forest, so retargeting one costs nothing: Town
+# still reaches Forest through the other. This takes over the RGD one.
+#
+# You still travel it normally - shake the local Pyotr's hand, walk the
+# route, step into the transition zone - you simply arrive at the Hub
+# gate instead of Forest.
+
+retarget = Level.Radius.Town.TownRGD | Level.Hub | Level.Hub.Gate.Exit
+
+debug = 0
+
+
+# ---------------------------------------------------------------------
+# REFERENCE, measured in game
+#
+# Destination levels:
+#   Level.Hub                Level.Radius.Town
+#   Level.Radius.Peninsula   Level.Radius.School
+#   Level.Radius.Forest      Level.Radius.Unlock_School
+#                            Level.Radius.Unlock_Town
+#
+# Arrival markers, and the map each one physically sits in:
+#   Level.Hub.Gate.Exit                 Hub
+#   Level.Hub.Gate.Forest.Exit          Hub
+#   Level.Hub.Gate.Peninsula.Exit       Hub
+#   Level.Radius.Peninsula.ToTown.Exit  Town
+#   Level.Radius.Town.Village.Exit      Forest
+#   Level.Radius.Town.TownRGD.Exit      Forest
+#   Level.Radius.Forest.Railroad.Exit   Town
+#   Level.Radius.Forest.TownRoad.Exit   Town
+#   Level.Radius.Forest.Peninsula.Exit  Peninsula
+#   Level.Radius.School.Town.Exit       Town
+#
+# The arrival marker MUST exist in the destination level, or you will
+# travel and land somewhere unintended.
+#
+# Gate tags for the map-to-map routes, by origin:
+#   Town     Level.Radius.Town.TownRGD      -> Forest
+#            Level.Radius.Town.Village      -> Forest
+#            Level.Radius.Town.School       -> School
+#            Level.Radius.Town.ToLabyrinth  -> Peninsula
+#            Level.Radius.Town.UnlockSchool -> Unlock_School
+#   Forest   Level.Radius.Forest.Facility   -> Hub
+#            Level.Radius.Forest.Railroad   -> Town
+#            Level.Radius.Forest.TownRoad   -> Town
+#            Level.Radius.Forest.Peninsula  -> Peninsula
+#            Level.Radius.Forest.UnlockTown -> Unlock_Town
+#   Hub      Level.Hub.Gate.Forest          -> Forest
+#            Level.Hub.Gate.Peninsula       -> Peninsula
+#
+# Anything with GateLocal in the tag is a same-map shuttle, not a level
+# change. Retargeting one of those is untested.
+# ---------------------------------------------------------------------
