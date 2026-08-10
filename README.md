@@ -12,6 +12,7 @@ with asset mods at the file level.
 |---|---|
 | [ITR2 Fog Tweaks](Into%20the%20Radius%202/ITR2%20Fog%20Tweaks) | Per-map control of the global height fog (the distance haze), tunable live while the game runs |
 | [ITR2 Distortion Zone Visibility](Into%20the%20Radius%202/ITR2%20Distortion%20Zone%20Visibility) | Removes the thick red screen haze inside distortion zones, leaving the zone itself fully visible |
+| [ITR2 NVG Field of View](Into%20the%20Radius%202/ITR2%20NVG%20Field%20of%20View) | Widens the night vision goggle view, per device, by an amount you choose |
 
 Each mod folder contains its `README.txt` (install and configuration),
 `NEXUS_DESCRIPTION.txt` (requirements and compatibility), and the

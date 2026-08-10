@@ -1,0 +1,77 @@
+REQUIREMENTS
+
+  UE4SS for Into the Radius 2.
+  Developed and tested against UE4SS v3.0.1 Beta (Shipping build).
+
+  Nothing else. This is a Lua-only mod - it replaces no game assets, so
+  it needs no pak tools, no LogicMods loader and no other dependency.
+
+  Tested on Steam build 24024260 (executable dated 7 July 2026,
+  Unreal Engine 5.5.4 Oculus fork).
+
+
+WHAT IS AND IS NOT SUPPORTED
+
+  Works:      PVS-7, PVS-31, GPNVG-18
+  Not:        PVS-14
+
+  The three supported devices all size their view with the same
+  material parameter. PVS-14 uses a different material that ignores it,
+  and nothing else tried had any effect. It ships switched off rather
+  than half working. If you only use the PVS-14, this mod does nothing
+  for you.
+
+
+COMPATIBILITY
+
+  Safe with:
+
+    - ITR2 Fog Tweaks and ITR2 Distortion Zone Visibility (my other
+      mods). Different systems, no interaction.
+    - Any .pak / LogicMod. This mod replaces no files, so it cannot
+      conflict with an asset mod at the file level.
+    - vrperfkit, OpenXR Toolkit, ReShade and similar.
+    - Save games are never read or written.
+
+
+  Conflicts with:
+
+    - Any mod that edits the night vision post process materials,
+      whether at runtime or by replacing the assets.
+    - A mod that renames or replaces the goggle material instances.
+      This one matches on asset name, so a rename means it simply stops
+      finding them - no crash, it just stops working.
+
+
+  Untested:
+
+    - Co-op. The mod only changes what your own client renders and
+      nothing it touches is replicated, so it should not affect your
+      partner - but I have not verified this with a second player.
+
+
+DOES THIS MAKE THE GAME EASIER?
+
+  Yes, somewhat - you see more through the goggles. Nothing else
+  changes: brightness, grain, colour, battery and detection all behave
+  exactly as they did. It widens the window, it does not improve what
+  you see through it.
+
+
+A NOTE ON THE PERCENTAGE
+
+  The setting scales the material's radius parameter, not the apparent
+  size of the view, and the relationship is far from linear. 150 reads
+  as roughly a 15 percent bigger image. Move in large steps - if a
+  change seems to do nothing, try 200 before assuming it is broken.
+
+  GPNVG-18 is a special case. It is the only one of the three that
+  never sets a radius of its own, so there is no stock value to take a
+  percentage of and the mod creates the override from scratch. Its
+  percentage is therefore not comparable to the other two. Judge it by
+  eye.
+
+
+PERFORMANCE
+
+  None. It writes one float per pair of goggles when you put them on.
