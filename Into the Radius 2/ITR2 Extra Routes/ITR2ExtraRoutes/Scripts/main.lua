@@ -3,8 +3,8 @@
 --
 --   Adds two level transitions Into the Radius 2 does not have:
 --
---     Outskirts -> Facility        (on by default)
---     Forest    -> Outskirts       (off by default, costs a route)
+--     Outskirts -> Facility
+--     Forest    -> Outskirts       (takes over Forest -> Peninsula)
 --
 --   Level transitions in this game are data. Each one carries the
 --   destination level, the arrival marker to land on, and the trigger
@@ -41,7 +41,7 @@ local ROUTES = {
         gate = "Level.Radius.Forest.Peninsula",
         to   = "Level.Radius.Town",
         exit = "Level.Radius.Forest.Railroad.Exit",
-        default = false,
+        default = true,
     },
 }
 
@@ -70,14 +70,16 @@ outskirts_to_facility = 1
 # onward to Outskirts is right across the map. This puts one near where
 # you land instead.
 #
-# THIS ONE HAS A COST. Forest has no spare route near that gate, so it
-# takes over Forest -> Peninsula. Peninsula is still directly reachable
-# from the Facility, so you do not lose access to it - but you do lose
-# the direct Forest link. That is why it is off by default.
+# NOTE WHAT IT REPLACES. Forest has no spare route near that gate, so
+# this takes over Forest -> Peninsula. Peninsula is still directly
+# reachable from the Facility, so you keep access to it - you lose only
+# the direct Forest link.
+#
+# Set this to 0 if you would rather keep Forest -> Peninsula.
 #
 # Travel it the normal way: the Pyotr at the Peninsula gate.
 
-forest_to_outskirts = 0
+forest_to_outskirts = 1
 ]]
 
 --------------------------------------------------------------------

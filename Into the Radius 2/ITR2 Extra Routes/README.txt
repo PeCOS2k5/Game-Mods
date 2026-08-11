@@ -5,8 +5,10 @@
 
 WHAT IT DOES
 
-  Outskirts -> Facility      on by default
-  Forest    -> Outskirts     off by default, has a cost
+  Outskirts -> Facility
+  Forest    -> Outskirts
+
+Both are on by default. Either can be switched off in config.txt.
 
 You travel them exactly the way you travel any route: shake the Pyotr's
 hand, walk the route, step into the transition zone. The mod changes
@@ -23,18 +25,19 @@ keeps the other, so no connection is lost. Use the Pyotr on the RGD
 road.
 
 
-FOREST -> OUTSKIRTS   (optional)
+FOREST -> OUTSKIRTS
 
 Coming back from the Facility you land in Forest, and the nearest way
 onward to Outskirts is right across the map. This puts one near where
 you land, at the Peninsula gate.
 
-It has a cost: Forest has no spare route near that gate, so this takes
-over Forest -> Peninsula. Peninsula is still directly reachable from the
-Facility, so you do not lose access to it - but you do lose that direct
-Forest link. Off by default for that reason.
+Note what it replaces: Forest has no spare route near that gate, so this
+takes over Forest -> Peninsula. Peninsula is still directly reachable
+from the Facility, so you keep access to it - you lose only the direct
+Forest link.
 
-Set forest_to_outskirts = 1 in config.txt to turn it on.
+Set forest_to_outskirts = 0 in config.txt if you would rather keep that
+link instead.
 
 
 REQUIREMENTS

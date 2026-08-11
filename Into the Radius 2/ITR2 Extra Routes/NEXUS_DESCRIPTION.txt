@@ -12,23 +12,25 @@ REQUIREMENTS
 
 WHAT IT DOES
 
-  Two level transitions the game does not have:
+  Two level transitions the game does not have, both active out of the
+  box:
 
-    Outskirts -> Facility     on by default
-    Forest    -> Outskirts    off by default, has a cost
+    Outskirts -> Facility
+    Forest    -> Outskirts
 
   Outskirts has no way back to the Facility. This gives it one by taking
   over one of the two routes Outskirts already has to Forest - it keeps
   the other, so nothing is lost.
 
-  The optional second route puts a way to Outskirts near where you land
-  in Forest when you come back from the Facility, instead of right
-  across the map. That one takes over Forest -> Peninsula, because
-  Forest has nothing spare near that gate. Peninsula is still directly
-  reachable from the Facility. Off by default so you choose.
+  The second puts a way to Outskirts near where you land in Forest when
+  you come back from the Facility, instead of right across the map. Note
+  what it replaces: Forest has nothing spare near that gate, so it takes
+  over Forest -> Peninsula. Peninsula is still directly reachable from
+  the Facility, so you keep access to it - you lose only the direct
+  Forest link.
 
-  Two switches in config.txt. There is deliberately no way to define
-  your own routes - see below.
+  Two switches in config.txt if you want either off. There is
+  deliberately no way to define your own routes - see below.
 
 
 HOW IT TRAVELS
