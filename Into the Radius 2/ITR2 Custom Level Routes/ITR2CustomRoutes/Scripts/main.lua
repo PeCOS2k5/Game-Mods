@@ -57,6 +57,23 @@ local DEFAULT_CFG = [[
 
 retarget = Level.Radius.Town.TownRGD | Level.Hub | Level.Hub.Gate.Exit
 
+
+# FOREST -> TOWN, closer to the Hub gate        (OPTIONAL - off by default)
+#
+# Coming back from Hub you land in Forest at the Facility gate, and the
+# nearest way onward to Town is about 870 m away across the map. This
+# takes over the Peninsula gate instead, which sits about 350 m from
+# where you land - the closest thing Forest has to spare.
+#
+# THE COST: you lose Forest -> Peninsula. Peninsula is still directly
+# reachable from the Hub, so for most people that is a good trade, but
+# it is your call - which is why this is off by default.
+#
+# Uncomment the line below to enable it.
+
+# retarget = Level.Radius.Forest.Peninsula | Level.Radius.Town | Level.Radius.Forest.Railroad.Exit
+
+
 debug = 0
 
 

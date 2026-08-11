@@ -12,6 +12,17 @@ It does this by retargeting one of the two routes Town already has to
 Forest. Town keeps a Forest route through the other one, so nothing is
 lost - you simply gain a way home.
 
+There is a second, OPTIONAL route in the config, switched off by
+default: a Forest -> Town link much closer to the Hub gate. Coming back
+from the Hub you land in Forest at the Facility gate, and the nearest
+way onward to Town is about 870 m across the map. Enabling it moves
+that to about 350 m.
+
+Unlike the first route, this one has a cost: it takes over the
+Forest -> Peninsula link, because Forest has nothing spare near the Hub
+gate. Peninsula is still directly reachable from the Hub. That is a
+good trade for most people but not everyone, which is why you opt in.
+
 You travel it exactly as you always would: shake the local Pyotr's
 hand, walk the route, step into the transition zone. You come out at
 the Hub gate instead of Forest.

@@ -16,6 +16,15 @@ WHAT IT DOES
   the two routes Outskirts already has to Forest. Outskirts keeps a
   Forest route through the other, so no connection is lost.
 
+  A second route is included but switched OFF by default: a Forest ->
+  Outskirts link near the Facility gate. Returning from the Facility you
+  land in Forest about 870 m from the nearest way onward to Outskirts;
+  this brings it to about 350 m.
+
+  It costs the Forest -> Peninsula link, because Forest has nothing
+  spare near that gate. Peninsula remains directly reachable from the
+  Facility. Uncomment one line in config.txt to enable it.
+
   The config is general - any transition can be pointed at any level.
 
 
