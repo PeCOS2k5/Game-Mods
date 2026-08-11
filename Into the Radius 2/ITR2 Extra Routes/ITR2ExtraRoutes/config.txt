@@ -1,0 +1,32 @@
+# ITR2 Extra Routes - configuration
+#
+# Two switches. 1 = on, 0 = off. Re-read once a second, so you can
+# change these while the game is running.
+#
+# ---------------------------------------------------------------------
+# OUTSKIRTS -> FACILITY
+#
+# Gives Outskirts a direct way back to the Facility, which the game does
+# not have. It takes over one of the two routes Outskirts already has to
+# Forest, and Outskirts keeps the other one, so nothing is lost.
+#
+# Travel it the normal way: the Pyotr on the RGD road.
+
+outskirts_to_facility = 1
+
+
+# ---------------------------------------------------------------------
+# FOREST -> OUTSKIRTS
+#
+# Coming back from the Facility you land in Forest, and the nearest way
+# onward to Outskirts is right across the map. This puts one near where
+# you land instead.
+#
+# THIS ONE HAS A COST. Forest has no spare route near that gate, so it
+# takes over Forest -> Peninsula. Peninsula is still directly reachable
+# from the Facility, so you do not lose access to it - but you do lose
+# the direct Forest link. That is why it is off by default.
+#
+# Travel it the normal way: the Pyotr at the Peninsula gate.
+
+forest_to_outskirts = 0

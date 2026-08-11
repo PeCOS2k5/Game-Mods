@@ -1,0 +1,87 @@
+REQUIREMENTS
+
+  UE4SS for Into the Radius 2.
+  Developed and tested against UE4SS v3.0.1 Beta (Shipping build).
+
+  Nothing else. Lua only - it replaces no game assets, so it needs no
+  pak tools, no LogicMods loader and no other dependency.
+
+  Tested on Steam build 24024260 (executable dated 7 July 2026,
+  Unreal Engine 5.5.4 Oculus fork).
+
+
+WHAT IT DOES
+
+  Two level transitions the game does not have:
+
+    Outskirts -> Facility     on by default
+    Forest    -> Outskirts    off by default, has a cost
+
+  Outskirts has no way back to the Facility. This gives it one by taking
+  over one of the two routes Outskirts already has to Forest - it keeps
+  the other, so nothing is lost.
+
+  The optional second route puts a way to Outskirts near where you land
+  in Forest when you come back from the Facility, instead of right
+  across the map. That one takes over Forest -> Peninsula, because
+  Forest has nothing spare near that gate. Peninsula is still directly
+  reachable from the Facility. Off by default so you choose.
+
+  Two switches in config.txt. There is deliberately no way to define
+  your own routes - see below.
+
+
+HOW IT TRAVELS
+
+  It does NOT teleport you. It changes where an existing transition
+  leads and gets out of the way. You shake the Pyotr's hand and walk the
+  route exactly as normal, and the game performs the transition itself:
+  the fog stage, the inventory handoff, and placing you on the correct
+  arrival marker.
+
+  Nothing about travel is reimplemented, so anything the game does
+  during a transition still happens.
+
+
+WHY YOU CANNOT ADD YOUR OWN ROUTES
+
+  A route needs a destination level and an arrival marker that exists in
+  that destination. Get either wrong and you travel and land somewhere
+  unintended, and the mod has no way to check it for you before you go.
+
+  An earlier build exposed this as free-form config. It was removed on
+  purpose. The two routes here are fixed and tested.
+
+
+COMPATIBILITY
+
+  Safe with:
+
+    - ITR2 Fog Tweaks, ITR2 Distortion Zone Visibility and
+      ITR2 NVG Field of View (my other mods). No interaction.
+    - Any .pak / LogicMod. This mod replaces no files.
+    - Save games are never read or written, and transition actors are
+      rebuilt on every level load, so uninstalling restores the game
+      completely and immediately.
+
+  Conflicts with:
+
+    - Any mod that edits level transitions or their destinations.
+    - A game update that renames the gameplay tags. The mod matches on
+      tag names, so a rename means it simply stops working - no crash.
+
+  Untested:
+
+    - Co-op. Transitions carry flags for host-only travel and for
+      requiring all players, and I have not tested with a second player.
+      Single player is unaffected.
+
+
+IS THIS CHEATING?
+
+  It connects two maps the game did not connect. It does not skip
+  content, unlock anything, or bypass a gate - the routes it takes over
+  are ones you already had access to, and you still walk them normally.
+
+  If you would rather not shortcut the world map, this is not for you,
+  and that is fair.
